@@ -13,6 +13,9 @@ fi
 
 alias os='echo $OS'
 
+# Command's shortcut
+alias h='helix'
+
 # Rails
 alias be='bundle exec'
 alias rdm="bin/rails db:migrate"
