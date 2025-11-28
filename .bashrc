@@ -14,9 +14,6 @@ fi
 # (don't mess with these directly, just overwrite them here!)
 source ~/.local/share/omarchy/default/bash/rc
 
-if [ -n "$FISH_VERSION" ]; then
-    # We're in fish, skip this file
-    return 0
-else
+if [ -z "$FISH_VERSION" ]; then
 	source ~/.custom_bash_config.sh
 fi
