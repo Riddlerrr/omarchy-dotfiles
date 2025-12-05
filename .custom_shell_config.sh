@@ -22,7 +22,7 @@ alias rdm="bin/rails db:migrate"
 alias rdr="bin/rails db:rollback"
 alias rgm="bin/rails generate migration"
 alias rdtp="bin/rails db:test:prepare"
-alias rrg="bin/rails routes G"
+alias rrg="bin/rails routes | grep"
 
 # Git
 alias gs='git status'
