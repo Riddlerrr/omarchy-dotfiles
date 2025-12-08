@@ -25,7 +25,7 @@ alias rdtp="bin/rails db:test:prepare"
 alias rrg="bin/rails routes | grep"
 
 # Git
-alias gs='git status'
+alias gs='git status --short'
 alias gd='git diff'
 alias gc='git checkout'
 alias gcb='git checkout -b'
@@ -59,10 +59,18 @@ load_local_aliases() {
   done
 }
 
-# Bash equivalent of ZSH's chpwd hook
-cd() {
-  builtin cd "$@" && load_local_aliases
-}
+# Shell-agnostic cd hook to load local aliases
+if [[ -n "$ZSH_VERSION" ]]; then
+  # ZSH: use chpwd hook
+  chpwd() {
+    load_local_aliases
+  }
+elif [[ -n "$BASH_VERSION" ]]; then
+  # Bash: override cd command
+  eval 'cd() {
+    builtin cd "$@" && load_local_aliases
+  }'
+fi
 
 load_local_aliases
 
@@ -113,4 +121,3 @@ lg() {
       lazygit "$@"
     fi
 }
-
