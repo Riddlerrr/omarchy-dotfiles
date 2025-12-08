@@ -5,3 +5,4 @@ include "%H/.local/share/omarchy/default/xcompose"
 <Multi_key> <space> <e> : "sergey@andronov.me"
 
 <Multi_key> <m> <d> : "✅" # done
+<Multi_key> <m> <t> : "🤔" # done
