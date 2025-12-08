@@ -25,3 +25,11 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
     eval "$(ssh-agent -s)" > /dev/null
     ssh-add ~/.ssh/id_rsa 2>/dev/null
 fi
+
+# Custom common keybindings
+bindkey '^[[A' up-line-or-search # Up arrow
+bindkey '^[[B' down-line-or-search # Down arrow
+bindkey '^[[H' beginning-of-line # Home
+bindkey '^[[F' end-of-line # End
+bindkey '^[[3~' delete-char # Delete
+bindkey '^?' backward-delete-char # Backspace
