@@ -17,6 +17,8 @@ fi
 
 # Add your own customizations below
 
+bindkey -e # emacs mode (vim mode is disabled)
+
 # Custom confings
 source ~/.custom_shell_config.sh
 
