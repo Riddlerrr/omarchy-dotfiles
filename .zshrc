@@ -19,6 +19,17 @@ fi
 
 bindkey -e # emacs mode (vim mode is disabled)
 
+# Completions setup
+autoload -Uz compinit
+compinit
+fpath=(/usr/share/zsh/site-functions $fpath)
+
+# Улучшения для completion
+zstyle ':completion:*' menu select  # Навигация стрелками в меню
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # Игнорировать регистр
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # Цвета как в ls
+zstyle ':completion:*' rehash true  # Автоматически находить новые команды
+
 # Custom confings
 source ~/.custom_shell_config.sh
 
