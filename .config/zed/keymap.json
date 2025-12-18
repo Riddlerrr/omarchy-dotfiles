@@ -13,12 +13,6 @@
     }
   },
   {
-    "context": "Editor && vim_mode == insert",
-    "bindings": {
-      // "j k": "vim::NormalBefore"
-    }
-  },
-  {
     "context": "Editor",
     "bindings": {
       "ctrl-backspace": "editor::DeleteLine"
@@ -34,6 +28,12 @@
           "ignore_brackets": false
         }
       ]
+    }
+  },
+  {
+    "context": "(Editor && mode == full)",
+    "bindings": {
+      "shift-enter": "editor::NewlineBelow"
     }
   }
 ]
