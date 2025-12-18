@@ -15,7 +15,7 @@ fi
 source ~/.local/share/omarchy/default/bash/rc
 
 # Custom confings
-source ~/.custom_bash_config.sh
+source ~/.custom_shell_config.sh
 
 # Autostart scripts
 if [ -z "$SSH_AUTH_SOCK" ]; then
