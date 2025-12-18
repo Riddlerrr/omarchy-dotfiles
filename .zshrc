@@ -17,6 +17,10 @@ fi
 
 # Add your own customizations below
 
+# load plugins, must be installed as a package first
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+
 bindkey -e # emacs mode (vim mode is disabled)
 
 # Completions setup
@@ -24,7 +28,7 @@ autoload -Uz compinit
 compinit
 fpath=(/usr/share/zsh/site-functions $fpath)
 
-# Улучшения для completion
+# completion improvements
 zstyle ':completion:*' menu select  # Навигация стрелками в меню
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'  # Игнорировать регистр
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"  # Цвета как в ls
@@ -40,8 +44,8 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
 fi
 
 # Custom common keybindings
-bindkey '^[[A' up-line-or-search # Up arrow
-bindkey '^[[B' down-line-or-search # Down arrow
+bindkey '^[[A' history-substring-search-up # Up arrow (default up-line-or-search)
+bindkey '^[[B' history-substring-search-down # Down arrow (default down-line-or-search)
 bindkey '^[[H' beginning-of-line # Home
 bindkey '^[[F' end-of-line # End
 bindkey '^[[3~' delete-char # Delete
