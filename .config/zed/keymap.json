@@ -35,5 +35,17 @@
     "bindings": {
       "shift-enter": "editor::NewlineBelow"
     }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "ctrl-j": null
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-j": "editor::JoinLines"
+    }
   }
 ]
