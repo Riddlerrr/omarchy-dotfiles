@@ -7,15 +7,16 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "show_wrap_guides": true,
   "snippet_sort_order": "top",
   "hover_popover_delay": 1000,
   "hover_popover_enabled": true,
   "tabs": {
     "file_icons": true,
-    "git_status": true
+    "git_status": true,
   },
   "tab_bar": {
-    "show": true
+    "show": true,
   },
   "when_closing_with_no_tabs": "keep_window_open",
   "agent_ui_font_size": 16.0,
@@ -25,29 +26,29 @@
     "always_allow_tool_actions": true,
     "default_model": {
       "provider": "copilot_chat",
-      "model": "claude-opus-4.5"
+      "model": "claude-sonnet-4.5",
     },
-    "model_parameters": []
+    "model_parameters": [],
   },
   "terminal": {
     "font_size": 15.0,
-    "copy_on_select": true
+    "copy_on_select": true,
   },
   "base_keymap": "VSCode",
   "multi_cursor_modifier": "alt",
   "sticky_scroll": {
-    "enabled": true
+    "enabled": true,
   },
   "vertical_scroll_margin": 2.0,
   "minimap": {
-    "show": "never"
+    "show": "never",
   },
   "use_system_window_tabs": true,
   "autosave": "on_focus_change",
   "confirm_quit": true,
   "file_types": {
     "ruby": ["*.transit", "*.axlsx"],
-    "slim": ["*.mjml"]
+    "slim": ["*.mjml"],
   },
   "use_on_type_format": true,
   "show_whitespaces": "selection",
@@ -61,29 +62,29 @@
   "theme": {
     "mode": "system",
     "light": "Gruvbox Light",
-    "dark": "Gruvbox Dark"
+    "dark": "Gruvbox Dark",
   },
   "features": {
-    "edit_prediction_provider": "copilot"
+    "edit_prediction_provider": "copilot",
   },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "!solargraph", "!rubocop", "!steep", "!sorbet", "..."]
+      "language_servers": ["ruby-lsp", "!solargraph", "!rubocop", "!steep", "!sorbet", "..."],
     },
     // Enable herb and ruby-lsp for *.html.erb files
     "HTML+ERB": {
-      "language_servers": ["herb", "ruby-lsp", "..."]
+      "language_servers": ["herb", "ruby-lsp", "..."],
     },
     // Enable ruby-lsp for *.js.erb files
     "JS+ERB": {
-      "language_servers": ["ruby-lsp", "..."]
+      "language_servers": ["ruby-lsp", "..."],
     },
     // Enable ruby-lsp for *.yaml.erb files
     "YAML+ERB": {
-      "language_servers": ["ruby-lsp", "..."]
+      "language_servers": ["ruby-lsp", "..."],
     },
     "Haml": {
-      "language_servers": ["ruby-lsp", "..."]
-    }
-  }
+      "language_servers": ["ruby-lsp", "..."],
+    },
+  },
 }
