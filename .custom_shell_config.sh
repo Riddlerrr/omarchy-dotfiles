@@ -29,6 +29,7 @@ alias gs='git status --short'
 alias gd='git diff'
 alias gc='git checkout'
 alias gcb='git checkout -b'
+alias gsw='git switch'
 alias gp='git pull'
 alias ga='git add'
 alias gb='git branch'
@@ -37,7 +38,12 @@ alias gsl='git stash list'
 alias gnb='git checkout -b'
 alias gm='git checkout master'
 # Beautiful git branch list
-alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) | %(authorname) | (%(color:green)%(committerdate:relative)%(color:reset)) | %(contents:subject)' | column -t -s '|'"
+alias gba="git for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(color:yellow)%(refname:short)%(color:reset) | %(authorname) | (%(color:green)%(committerdate:relative)%(color:reset)) | %(if:equals=[gone])%(upstream:track)%(then)%(color:red)merged%(color:reset)%(else)%(color:cyan)open%(color:reset)%(end) | %(contents:subject)' | column -t -s '|'"
+alias gprune='git fetch -p --quiet'
+# Show all merged branches (deleted on the server)
+alias gmerged='gprune && git for-each-ref --format="%(refname:short) %(upstream:track)" refs/heads/ | awk "\$2 == \"[gone]\" {print \$1}"'
+# Delete all local branches that were merged
+alias gdmerged="gmerged | xargs -r git branch -D"
 
 load_local_aliases() {
   local alias_files=()
