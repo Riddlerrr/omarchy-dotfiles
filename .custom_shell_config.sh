@@ -65,17 +65,10 @@ load_local_aliases() {
   done
 }
 
-# Shell-agnostic cd hook to load local aliases
+# ZSH hook to load local aliases on directory change
 if [[ -n "$ZSH_VERSION" ]]; then
-  # ZSH: use chpwd hook
-  chpwd() {
-    load_local_aliases
-  }
-elif [[ -n "$BASH_VERSION" ]]; then
-  # Bash: override cd command
-  eval 'cd() {
-    builtin cd "$@" && load_local_aliases
-  }'
+  autoload -U add-zsh-hook
+  add-zsh-hook chpwd load_local_aliases
 fi
 
 load_local_aliases
