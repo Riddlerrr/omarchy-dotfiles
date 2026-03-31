@@ -41,6 +41,9 @@ alias gprune='git fetch -p --quiet'
 alias gmerged='gprune && git for-each-ref --format="%(refname:short) %(upstream:track)" refs/heads/ | awk "\$2 == \"[gone]\" {print \$1}"'
 # Delete all local branches that were merged
 alias gdmerged="gmerged | xargs -r git branch -D"
+# Skip tracking local changes for files
+alias gskip='git update-index --skip-worktree'
+alias gunskip='git update-index --no-skip-worktree'
 
 load_local_aliases() {
   local alias_files=()
