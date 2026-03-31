@@ -1,6 +1,10 @@
 # If not running interactively, don't do anything (leave this at the top of this file)
 [[ $- != *i* ]] && return
 
+if [[ "$TERM_PROGRAM" == "vscode" ]]; then
+  return
+fi
+
 # Auto-launch zsh shell if in interactive bash
 if command -v zsh &> /dev/null; then
   if [[ $(ps --no-header --pid=$PPID --format=comm) != "zsh" && -z ${BASH_EXECUTION_STRING} && ${SHLVL} == 1 ]]
