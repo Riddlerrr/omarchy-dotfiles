@@ -7,6 +7,18 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 {
+  "agent_servers": {
+    "pi-acp": {
+      "type": "registry",
+    },
+  },
+  "edit_predictions": {
+    "provider": "copilot",
+  },
+  "icon_theme": "Zed (Default)",
+  "session": {
+    "trust_all_worktrees": true,
+  },
   "show_wrap_guides": true,
   "snippet_sort_order": "top",
   "hover_popover_delay": 1000,
@@ -23,7 +35,9 @@
   "buffer_line_height": "standard",
   "buffer_font_family": "JetBrainsMono Nerd Font",
   "agent": {
-    "always_allow_tool_actions": true,
+    "tool_permissions": {
+      "default": "allow",
+    },
     "default_model": {
       "provider": "copilot_chat",
       "model": "claude-sonnet-4.5",
@@ -60,16 +74,13 @@
   "ui_font_size": 16,
   "buffer_font_size": 15,
   "theme": {
-    "mode": "system",
+    "mode": "dark",
     "light": "Gruvbox Light",
     "dark": "Gruvbox Dark",
   },
-  "features": {
-    "edit_prediction_provider": "copilot",
-  },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "!solargraph", "!rubocop", "!steep", "!sorbet", "..."],
+      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "!steep", "!sorbet", "!kanayago", "..."],
     },
     // Enable herb and ruby-lsp for *.html.erb files
     "HTML+ERB": {
