@@ -80,7 +80,16 @@
   },
   "languages": {
     "Ruby": {
-      "language_servers": ["ruby-lsp", "rubocop", "!solargraph", "!steep", "!sorbet", "!kanayago", "..."],
+      "language_servers": [
+        "ruby-lsp",
+        "rubocop",
+        "!solargraph",
+        "!steep",
+        "!sorbet",
+        "!kanayago",
+        "!fuzzy-ruby-server",
+        "...",
+      ],
     },
     // Enable herb and ruby-lsp for *.html.erb files
     "HTML+ERB": {
