@@ -1,0 +1,33 @@
+#!/bin/bash
+# Toggle the notes special workspace and auto-start/focus Obsidian
+
+# Check if notes special workspace is currently active on the focused monitor
+NOTES_ACTIVE=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .specialWorkspace.name')
+
+# Toggle the workspace on the focused monitor
+hyprctl dispatch togglespecialworkspace notes
+
+# If notes wasn't active on the focused monitor, we just opened it
+if [ "$NOTES_ACTIVE" != "special:notes" ]; then
+  OBSIDIAN_ADDR=$(hyprctl clients -j | jq -r '.[] | select(.class | test("obsidian"; "i")) | .address' | head -1)
+
+  if [ -z "$OBSIDIAN_ADDR" ]; then
+    # Obsidian not running — launch it, wait for window, then move to notes
+    uwsm-app -- obsidian &
+    (
+      for i in $(seq 1 50); do
+        sleep 0.1
+        ADDR=$(hyprctl clients -j | jq -r '.[] | select(.class | test("obsidian"; "i")) | .address' | head -1)
+        if [ -n "$ADDR" ]; then
+          hyprctl dispatch movetoworkspacesilent "special:notes,address:$ADDR"
+          hyprctl dispatch focuswindow "address:$ADDR"
+          break
+        fi
+      done
+    ) &
+  else
+    # Obsidian already running — move it to notes and focus
+    hyprctl dispatch movetoworkspacesilent "special:notes,address:$OBSIDIAN_ADDR"
+    hyprctl dispatch focuswindow "address:$OBSIDIAN_ADDR"
+  fi
+fi
