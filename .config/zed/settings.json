@@ -75,8 +75,8 @@
   "buffer_font_size": 15,
   "theme": {
     "mode": "dark",
-    "light": "Omazed",
-    "dark": "Omazed",
+    "light": "Gruvbox Light",
+    "dark": "Gruvbox Dark",
   },
   "languages": {
     "Ruby": {
