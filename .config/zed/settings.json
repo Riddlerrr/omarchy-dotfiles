@@ -83,6 +83,15 @@
     "dark": "Gruvbox Dark",
   },
   "lsp": {
+    "vscode-css-language-server": {
+      "settings": {
+        "css": {
+          "lint": {
+            "unknownAtRules": "ignore",
+          },
+        },
+      },
+    },
     "ruby-lsp": {
       "binary": {
         "path": "/usr/bin/mise",
