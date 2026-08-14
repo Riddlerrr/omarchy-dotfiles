@@ -5,7 +5,7 @@
 NOTES_ACTIVE=$(hyprctl monitors -j | jq -r '.[] | select(.focused == true) | .specialWorkspace.name')
 
 # Toggle the workspace on the focused monitor
-hyprctl dispatch togglespecialworkspace notes
+hyprctl dispatch 'hl.dsp.workspace.toggle_special("notes")'
 
 # If notes wasn't active on the focused monitor, we just opened it
 if [ "$NOTES_ACTIVE" != "special:notes" ]; then
@@ -19,15 +19,15 @@ if [ "$NOTES_ACTIVE" != "special:notes" ]; then
         sleep 0.1
         ADDR=$(hyprctl clients -j | jq -r '.[] | select(.class | test("obsidian"; "i")) | .address' | head -1)
         if [ -n "$ADDR" ]; then
-          hyprctl dispatch movetoworkspacesilent "special:notes,address:$ADDR"
-          hyprctl dispatch focuswindow "address:$ADDR"
+          hyprctl dispatch "hl.dsp.window.move({ workspace = \"special:notes\", window = \"address:$ADDR\", follow = false })"
+          hyprctl dispatch "hl.dsp.focus({ window = \"address:$ADDR\" })"
           break
         fi
       done
     ) &
   else
     # Obsidian already running — move it to notes and focus
-    hyprctl dispatch movetoworkspacesilent "special:notes,address:$OBSIDIAN_ADDR"
-    hyprctl dispatch focuswindow "address:$OBSIDIAN_ADDR"
+    hyprctl dispatch "hl.dsp.window.move({ workspace = \"special:notes\", window = \"address:$OBSIDIAN_ADDR\", follow = false })"
+    hyprctl dispatch "hl.dsp.focus({ window = \"address:$OBSIDIAN_ADDR\" })"
   fi
 fi
