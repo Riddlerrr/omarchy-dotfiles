@@ -72,6 +72,35 @@ local function ctrl_shortcut(key)
 	return hl.dsp.send_shortcut({ mods = "CTRL", key = key, window = "activewindow" })
 end
 
+-- Work around send_key_state resolving C/V/X against the active layout.
+local function clipboard_shortcut(mods, key, terminal_mods, terminal_key)
+	return function()
+		local active_mods, active_key = mods, key
+		local window = hl.get_active_window()
+
+		for _, tag in ipairs(window and window.tags or {}) do
+			if terminal_mods and tag:gsub("%*$", "") == "terminal" then
+				active_mods, active_key = terminal_mods, terminal_key
+				break
+			end
+		end
+
+		local function send(state)
+			hl.dispatch(hl.dsp.send_key_state({ mods = active_mods, key = active_key, state = state }))
+		end
+
+		send("down")
+		hl.timer(function() send("up") end, { timeout = 50, type = "oneshot" })
+	end
+end
+
+hl.unbind("SUPER + C") -- was: Universal copy
+hl.unbind("SUPER + V") -- was: Universal paste
+hl.unbind("SUPER + X") -- was: Universal cut
+o.bind("SUPER + C", "Universal copy", clipboard_shortcut("CTRL", "code:54", "CTRL", "Insert"))
+o.bind("SUPER + V", "Universal paste", clipboard_shortcut("CTRL", "code:55", "SHIFT", "Insert"))
+o.bind("SUPER + X", "Universal cut", clipboard_shortcut("CTRL", "code:53"))
+
 hl.unbind("SUPER + S") -- was: Toggle scratchpad
 hl.unbind("SUPER + F") -- was: Full screen
 hl.unbind("SUPER + BACKSPACE") -- was: Toggle window transparency
