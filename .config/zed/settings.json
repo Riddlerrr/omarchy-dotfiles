@@ -9,13 +9,7 @@
 {
   "cli_default_open_behavior": "existing_window",
   "agent_servers": {
-    "opencode": {
-      "type": "registry"
     },
-    "pi-acp": {
-      "type": "registry",
-    },
-  },
   "edit_predictions": {
     "provider": "copilot",
   },
