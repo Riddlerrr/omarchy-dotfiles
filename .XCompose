@@ -1,4 +1,4 @@
-include "%H/.local/share/omarchy/default/xcompose"
+include "/usr/share/omarchy/default/xcompose"
 
 # Identification
 <Multi_key> <space> <n> : "Sergei Andronov"
@@ -6,3 +6,5 @@ include "%H/.local/share/omarchy/default/xcompose"
 
 <Multi_key> <m> <d> : "✅" # done
 <Multi_key> <m> <t> : "🤔" # done
+
+<Multi_key> <q> : "Ask me questions after your research if you need to clarify something"
