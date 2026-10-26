@@ -43,14 +43,3 @@ bindkey '^[[F' end-of-line # End
 bindkey '^[[3~' delete-char # Delete
 bindkey '^?' backward-delete-char # Backspace
 
-# Save and restore the last used dir
-LASTDIR_FILE="$HOME/.cache/zsh/last-directory"
-[[ -d "$HOME/.cache/zsh" ]] || mkdir -p "$HOME/.cache/zsh"
-
-if [[ -f "$LASTDIR_FILE" ]] && [[ -d "$(cat "$LASTDIR_FILE")" ]]; then
-    cd "$(cat "$LASTDIR_FILE")"
-fi
-
-chpwd() {
-    pwd > "$LASTDIR_FILE"
-}
