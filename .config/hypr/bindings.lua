@@ -50,7 +50,7 @@ o.bind("SUPER + SPACE", "Switch keyboard layout", "~/.local/bin/notify-layout.sh
 o.bind("ALT + SPACE", "Launch apps", "omarchy-menu toggle apps")
 
 hl.unbind("SUPER + ALT + SPACE") -- was: Apps menu
-o.bind("SUPER + GRAVE", "Omarchy menu", "omarchy-menu toggle root")
+o.bind("SUPER + ALT + SPACE", "Omarchy menu", "omarchy-menu toggle root")
 
 hl.unbind("SUPER + W") -- was: Close window
 o.bind("SUPER + Q", "Close window", hl.dsp.window.close())
