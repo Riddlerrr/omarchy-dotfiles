@@ -122,3 +122,9 @@ hl.unbind("SUPER + ALT + F") -- was: Full width
 o.bind("F11", "Full screen", hl.dsp.window.fullscreen({ mode = "fullscreen" }))
 o.bind("ALT + F11", "Full width", hl.dsp.window.fullscreen({ mode = "maximized" }))
 o.bind("CTRL + F11", "Tiled full screen", "omarchy-hyprland-window-tiled-fullscreen-toggle")
+
+-- Leave host shortcuts to the VM viewer until Super+F12 is pressed again.
+o.bind("SUPER + F12", "VM keyboard passthrough", hl.dsp.submap("vm_passthrough"))
+hl.define_submap("vm_passthrough", function()
+	o.bind("SUPER + F12", "Return keyboard to host", hl.dsp.submap("reset"))
+end)
