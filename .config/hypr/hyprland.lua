@@ -27,3 +27,4 @@ require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
 -- o.window("qemu", { workspace = "5" })
+o.window({ class = "^Vncviewer$", title = "^QEMU \\(open-qa\\) - TigerVNC$" }, { float = true, center = true })
