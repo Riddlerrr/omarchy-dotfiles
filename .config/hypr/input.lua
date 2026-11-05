@@ -5,9 +5,9 @@
 -- See https://wiki.hypr.land/Configuring/Basics/Variables/#input
 hl.config({
 	input = {
-		-- Use multiple keyboard layouts and switch between them with Left Alt + Right Alt.
+		-- Switch layouts with both Shift keys together.
 		kb_layout = "us,ru",
-		kb_options = "compose:caps,grp:win_space_toggle",
+		kb_options = "compose:caps,grp:shifts_toggle",
 
 		-- Use a specific keyboard variant if needed (e.g. intl for international keyboards).
 		kb_variant = ",mac",
@@ -61,7 +61,7 @@ hl.config({
 -- Slimbook laptop keyboard: swap Alt and Super.
 hl.device({
 	name = "at-translated-set-2-keyboard",
-	kb_options = "compose:caps,grp:win_space_toggle,altwin:swap_alt_win",
+	kb_options = "compose:caps,altwin:swap_alt_win,grp:shifts_toggle",
 })
 
 hl.gesture({ fingers = 3, direction = "horizontal", action = "workspace" })
