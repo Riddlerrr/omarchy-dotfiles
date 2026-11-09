@@ -26,5 +26,7 @@ require("hypr.autostart")
 require("default.hypr.toggles")
 
 -- Add any other personal Hyprland configuration below.
+-- Route Omarchy's universal copy/paste shortcuts as terminal shortcuts.
+o.window("^herdr-app$", { tag = "+terminal" })
 -- o.window("qemu", { workspace = "5" })
 o.window({ class = "^Vncviewer$", title = "^QEMU \\(open-qa\\) - TigerVNC$" }, { float = true, center = true })
