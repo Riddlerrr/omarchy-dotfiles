@@ -65,12 +65,6 @@ load_local_aliases() {
   done
 }
 
-# ZSH hook to load local aliases on directory change
-if [[ -n "$ZSH_VERSION" ]]; then
-  autoload -U add-zsh-hook
-  add-zsh-hook chpwd load_local_aliases
-fi
-
 load_local_aliases
 
 lg() {
