@@ -7,7 +7,7 @@ local omarchy_monitor_scale = 2
 hl.env("GDK_SCALE", tostring(omarchy_gdk_scale))
 
 -- PC: external LG.
-hl.monitor({ output = "DP-2", mode = "3840x2160@60", position = "auto", scale = omarchy_monitor_scale })
+hl.monitor({ output = "DP-3", mode = "3840x2160@60", position = "auto", scale = omarchy_monitor_scale })
 
 -- Slimbook: built-in display below and external LG above/right.
 hl.monitor({ output = "eDP-1", mode = "2880x1800@120", position = "0x180", scale = omarchy_monitor_scale })
