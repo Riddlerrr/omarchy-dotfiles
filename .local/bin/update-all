@@ -4,3 +4,4 @@ set -euo pipefail
 omarchy update
 flatpak update -y
 pi update --extensions
+omarchy plugin update
