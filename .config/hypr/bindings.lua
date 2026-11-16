@@ -64,6 +64,33 @@ o.bind(
 o.bind("SUPER + N", "Toggle notes", "~/.local/bin/omarchy-toggle-notes")
 o.bind("SUPER + ALT + N", "Move window to notes", hl.dsp.window.move({ workspace = "special:notes", follow = false }))
 
+-- Work around send_key_state resolving letter names against the active layout.
+local function clipboard_shortcut(mods, key, terminal_mods, terminal_key)
+	return function()
+		local active_mods, active_key = mods, key
+		local window = hl.get_active_window()
+
+		for _, tag in ipairs(window and window.tags or {}) do
+			if terminal_mods and tag:gsub("%*$", "") == "terminal" then
+				active_mods, active_key = terminal_mods, terminal_key
+				break
+			end
+		end
+
+		local function send(state)
+			hl.dispatch(hl.dsp.send_key_state({ mods = active_mods, key = active_key, state = state }))
+		end
+
+		send("down")
+		hl.timer(function() send("up") end, { timeout = 50, type = "oneshot" })
+	end
+end
+
+o.rebind("SUPER + A", "Select all", clipboard_shortcut("CTRL", "code:38"))
+o.rebind("SUPER + C", "Universal copy", clipboard_shortcut("CTRL", "code:54", "CTRL", "Insert"))
+o.rebind("SUPER + V", "Universal paste", clipboard_shortcut("CTRL", "code:55", "SHIFT", "Insert"))
+o.rebind("SUPER + X", "Universal cut", clipboard_shortcut("CTRL", "code:53"))
+
 hl.unbind("SUPER + S") -- was: Toggle scratchpad
 hl.unbind("SUPER + F") -- was: Full screen
 hl.unbind("SUPER + BACKSPACE") -- was: Toggle window transparency
